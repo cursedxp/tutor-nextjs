@@ -98,14 +98,6 @@ export default function Home() {
 
       <main className="max-w-6xl mx-auto">
         <div className="flex flex-col items-center mb-12">
-          <Image
-            className="dark:invert mb-8"
-            src="/next.svg"
-            alt="Next.js logo"
-            width={180}
-            height={38}
-            priority
-          />
           <h1 className="text-3xl font-bold text-center mb-4">
             Next.js Senior Developer Training Project
           </h1>
