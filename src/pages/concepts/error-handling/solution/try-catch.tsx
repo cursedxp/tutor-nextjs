@@ -7,7 +7,7 @@ const fetchData = async (endpoint: string) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   if (random < 0.3) {
-    throw new Error("Network error: Failed to fetch data");
+    throw new Error(`Network error: Failed to fetch data from ${endpoint}`);
   }
   if (random < 0.6) {
     throw new Error("Server error: 500 Internal Server Error");
@@ -21,10 +21,10 @@ const uploadFile = async (file: File) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   if (random < 0.3) {
-    throw new Error("File too large: Maximum size is 5MB");
+    throw new Error(`File too large: ${file.name} exceeds 5MB limit`);
   }
   if (random < 0.6) {
-    throw new Error("Invalid file type: Only images are allowed");
+    throw new Error(`Invalid file type: ${file.type} is not supported`);
   }
   return { success: true, url: "https://example.com/uploaded-file.jpg" };
 };
@@ -80,6 +80,7 @@ const TryCatchSolution: React.FC = () => {
       setFormErrors({});
       alert("Form submitted successfully!");
     } catch (error) {
+      console.error("Form submission error:", error);
       setFormErrors(validateForm());
     }
   };

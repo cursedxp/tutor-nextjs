@@ -11,10 +11,29 @@ import Link from "next/link";
 // 1. Generate or use a placeholder blur data URL
 // 2. This will be shown while the image loads
 
+const imageConfigs = {
+  desktop: {
+    url: "https://images.unsplash.com/photo-1682687220063-4742bd7fd538",
+    width: 1920,
+    height: 1080,
+  },
+  tablet: {
+    url: "https://images.unsplash.com/photo-1682687220063-4742bd7fd538",
+    width: 1024,
+    height: 768,
+  },
+  mobile: {
+    url: "https://images.unsplash.com/photo-1682687220063-4742bd7fd538",
+    width: 640,
+    height: 480,
+  },
+};
+
+const blurDataURL =
+  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkLzYvLy0vLzYvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLz/2wBDAR0dHR4eHRoaHSQtJSEkLzYvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLz/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=";
+
 const AdvancedImageOptimizationStarter = () => {
-  // TODO: Add loading state
-  // 1. Create state for tracking image load
-  // 2. Use it to handle loading transitions
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
@@ -27,36 +46,63 @@ const AdvancedImageOptimizationStarter = () => {
           implementation.
         </p>
 
-        {/* TODO: Blur-up Loading Example */}
-        {/* 1. Add Image component with blur placeholder */}
-        {/* 2. Handle loading state transition */}
-        {/* 3. Use appropriate sizing and priority */}
+        {/* Blur-up Loading Example */}
         <div className="mb-8">
           <h2 className="text-xl font-semibold mb-4">Blur-up Loading</h2>
           <div className="relative aspect-video">
-            {/* Add Image component here */}
+            <Image
+              src={imageConfigs.desktop.url}
+              alt="Blur-up loading example"
+              fill
+              priority
+              placeholder="blur"
+              blurDataURL={blurDataURL}
+              className={`transition-opacity duration-300 ${
+                isLoading ? "opacity-0" : "opacity-100"
+              }`}
+              onLoadingComplete={() => setIsLoading(false)}
+            />
           </div>
         </div>
 
-        {/* TODO: Art Direction Example */}
-        {/* 1. Use picture element for different screen sizes */}
-        {/* 2. Add source elements with media queries */}
-        {/* 3. Include fallback Image component */}
+        {/* Art Direction Example */}
         <div className="mb-8">
           <h2 className="text-xl font-semibold mb-4">Art Direction</h2>
           <div className="relative aspect-video">
-            {/* Add picture element here */}
+            <picture>
+              <source
+                media="(min-width: 1024px)"
+                srcSet={imageConfigs.desktop.url}
+              />
+              <source
+                media="(min-width: 768px)"
+                srcSet={imageConfigs.tablet.url}
+              />
+              <Image
+                src={imageConfigs.mobile.url}
+                alt="Art direction example"
+                fill
+                className="object-cover"
+              />
+            </picture>
           </div>
         </div>
 
-        {/* TODO: Responsive Images Grid */}
-        {/* 1. Create a responsive grid */}
-        {/* 2. Add multiple optimized images */}
-        {/* 3. Use appropriate sizes prop */}
+        {/* Responsive Images Grid */}
         <div className="mb-8">
           <h2 className="text-xl font-semibold mb-4">Responsive Images Grid</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {/* Add grid items here */}
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div key={i} className="relative aspect-square">
+                <Image
+                  src={imageConfigs.desktop.url}
+                  alt={`Grid image ${i}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+            ))}
           </div>
         </div>
 

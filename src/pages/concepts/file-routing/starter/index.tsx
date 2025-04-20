@@ -9,15 +9,19 @@ const FileRoutingStarter = () => {
       <div className="mb-8">
         <p className="mb-4">
           Next.js has a file-system based router built on the concept of pages.
-          When a file is added to the pages directory, it's automatically
+          When a file is added to the pages directory, it&apos;s automatically
           available as a route.
         </p>
 
         <p className="mb-4">Your task is to:</p>
 
         <ol className="list-decimal ml-8 mb-6 space-y-2">
-          <li>Create a new page called "about.tsx" in this directory</li>
-          <li>Create a nested page by adding "settings/profile.tsx"</li>
+          <li>
+            Create a new page called &quot;about.tsx&quot; in this directory
+          </li>
+          <li>
+            Create a nested page by adding &quot;settings/profile.tsx&quot;
+          </li>
           <li>Link all pages together</li>
         </ol>
 

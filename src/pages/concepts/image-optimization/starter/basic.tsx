@@ -29,31 +29,61 @@ const BasicImageOptimizationStarter: React.FC = () => {
           is to implement the following features:
         </p>
 
-        {/* TODO: Implement Fixed Size Image */}
+        {/* Fixed Size Image */}
         <div className="mb-8 border-2 border-dashed border-gray-300 p-4 rounded-lg">
           <h2 className="text-xl font-semibold mb-4">Fixed Size Image</h2>
-          <p className="text-gray-600">
-            Implement a fixed size image (800x450) using the Next.js Image
-            component.
-          </p>
+          <div className="relative w-[800px] h-[450px]">
+            <Image
+              src={images.landscape.url}
+              alt="Landscape image"
+              width={800}
+              height={450}
+              className="object-cover"
+            />
+          </div>
         </div>
 
-        {/* TODO: Implement Fill Container Image */}
+        {/* Fill Container Image */}
         <div className="mb-8 border-2 border-dashed border-gray-300 p-4 rounded-lg">
           <h2 className="text-xl font-semibold mb-4">Fill Container Image</h2>
-          <p className="text-gray-600">
-            Implement an image that fills its container while maintaining aspect
-            ratio.
-          </p>
+          <div className="relative w-full h-[400px]">
+            <Image
+              src={images.portrait.url}
+              alt="Portrait image"
+              fill
+              className="object-cover"
+            />
+          </div>
         </div>
 
-        {/* TODO: Implement Quality Optimization */}
+        {/* Quality Optimization */}
         <div className="mb-8 border-2 border-dashed border-gray-300 p-4 rounded-lg">
           <h2 className="text-xl font-semibold mb-4">Quality Optimization</h2>
-          <p className="text-gray-600">
-            Implement two images side by side comparing default quality (75) and
-            high quality (100) settings.
-          </p>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <h3 className="text-lg font-medium mb-2">Default Quality (75)</h3>
+              <div className="relative w-full h-[300px]">
+                <Image
+                  src={images.landscape.url}
+                  alt="Default quality image"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            <div>
+              <h3 className="text-lg font-medium mb-2">High Quality (100)</h3>
+              <div className="relative w-full h-[300px]">
+                <Image
+                  src={images.landscape.url}
+                  alt="High quality image"
+                  fill
+                  quality={100}
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">

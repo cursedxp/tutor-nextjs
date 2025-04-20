@@ -69,9 +69,9 @@ const translations: Translations = {
   fr: {
     title: "Internationalisation de Base (Solution)",
     description:
-      "Cet exemple démontre l'internationalisation de base avec changement de langue.",
+      "Cet exemple démontre l&apos;internationalisation de base avec changement de langue.",
     currentLanguage: "Langue Actuelle",
-    exampleContent: "Contenu d'Exemple",
+    exampleContent: "Contenu d&apos;Exemple",
     content1: "Ceci est un exemple de contenu traduit.",
     content2: "Vous pouvez basculer entre différentes langues.",
     content3:

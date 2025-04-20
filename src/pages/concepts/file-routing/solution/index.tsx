@@ -9,7 +9,7 @@ const FileRoutingSolution = () => {
       <div className="mb-8">
         <p className="mb-4">
           Next.js has a file-system based router built on the concept of pages.
-          When a file is added to the pages directory, it's automatically
+          When a file is added to the pages directory, it&apos;s automatically
           available as a route.
         </p>
 

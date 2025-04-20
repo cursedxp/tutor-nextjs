@@ -45,7 +45,7 @@ const translations = {
   fr: {
     title: "Fonctionnalités Avancées (Solution)",
     description:
-      "Cet exemple démontre des fonctionnalités avancées d'internationalisation.",
+      "Cet exemple démontre des fonctionnalités avancées d&apos;internationalisation.",
     advancedFeatures: "Fonctionnalités Avancées",
     dateFormatting: "Format de Date",
     numberFormatting: "Format de Nombres",
