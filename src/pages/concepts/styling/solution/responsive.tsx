@@ -21,8 +21,8 @@ const ResponsiveStyling = () => {
           <div className="bg-white p-4 rounded-lg shadow">
             <h2 className="text-xl font-semibold mb-2">Responsive Card 1</h2>
             <p className="text-gray-600">
-              This card adjusts its width based on screen size using Tailwind's
-              grid system.
+              This card adjusts its width based on screen size using
+              Tailwind&apos;s grid system.
             </p>
           </div>
 

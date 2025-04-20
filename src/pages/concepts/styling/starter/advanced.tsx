@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 // TODO: Import the CSS Module
 // 1. Create an advanced.module.css file

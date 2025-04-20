@@ -19,8 +19,8 @@ const AnalyticsHome = () => {
             Timestamp: {new Date().toISOString()}
           </p>
           <p className="mt-2 text-gray-900">
-            Check the network tab in your browser's developer tools to see the
-            analytics headers.
+            Check the network tab in your browser&apos;s developer tools to see
+            the analytics headers.
           </p>
         </div>
       </div>

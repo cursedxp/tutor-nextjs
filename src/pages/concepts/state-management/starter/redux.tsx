@@ -1,7 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { Provider, useDispatch, useSelector } from "react-redux";
-import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 // TODO: Define the state type
 // 1. Create a CounterState type with:

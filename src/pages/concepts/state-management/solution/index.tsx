@@ -16,7 +16,7 @@ const StateManagementSolution = () => {
           <div className="border rounded-lg p-4">
             <h2 className="text-xl font-semibold mb-2">1. Context API</h2>
             <p className="mb-2">
-              Manage global state using React's built-in Context API.
+              Manage global state using React&apos;s built-in Context API.
             </p>
             <Link
               href="/concepts/state-management/solution/context"

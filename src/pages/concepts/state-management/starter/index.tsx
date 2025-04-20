@@ -16,7 +16,7 @@ const StateManagementStarter = () => {
           <div className="border rounded-lg p-4">
             <h2 className="text-xl font-semibold mb-2">1. Context API</h2>
             <p className="mb-2">
-              Implement global state management using React's Context API.
+              Implement global state management using React&apos;s Context API.
             </p>
             <Link
               href="/concepts/state-management/starter/context"
