@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { generateToken, decodeToken, JWTPayload } from "@/utils/jwt";
 
 const JWTAuthSolution = () => {
-  const router = useRouter();
   const [token, setToken] = useState<string | null>(null);
   const [decodedToken, setDecodedToken] = useState<JWTPayload | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -34,7 +32,11 @@ const JWTAuthSolution = () => {
       setDecodedToken(mockUser);
       setError(null);
     } catch (err) {
-      setError("Failed to generate token");
+      setError(
+        `Failed to generate token: ${
+          err instanceof Error ? err.message : "Unknown error"
+        }`
+      );
     }
   };
 

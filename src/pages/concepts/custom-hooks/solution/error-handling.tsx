@@ -1,6 +1,30 @@
 import React from "react";
 import Link from "next/link";
 
+interface UserData {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address: {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+    geo: {
+      lat: string;
+      lng: string;
+    };
+  };
+  phone: string;
+  website: string;
+  company: {
+    name: string;
+    catchPhrase: string;
+    bs: string;
+  };
+}
+
 // Custom hook for error handling
 const useError = () => {
   const [error, setError] = React.useState<Error | null>(null);
@@ -44,7 +68,7 @@ const fetchUserData = async (id: string) => {
 const ErrorHandlingExample: React.FC = () => {
   const { error, loading, setLoading, handleError, clearError } = useError();
   const [userId, setUserId] = React.useState("1");
-  const [userData, setUserData] = React.useState<any>(null);
+  const [userData, setUserData] = React.useState<UserData | null>(null);
 
   const handleFetch = async () => {
     try {

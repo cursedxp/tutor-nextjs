@@ -1,6 +1,22 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { signIn, signOut, useSession } from "next-auth/react";
+
+declare module "next-auth" {
+  interface User {
+    provider?: string;
+    role?: string;
+  }
+
+  interface Session {
+    user: User & {
+      name?: string | null;
+      email?: string | null;
+      image?: string | null;
+    };
+  }
+}
 
 const OAuthSolution = () => {
   const { data: session, status } = useSession();
@@ -58,10 +74,12 @@ const OAuthSolution = () => {
                   <p>Provider: {session.user?.provider}</p>
                   <p>Role: {session.user?.role}</p>
                   {session.user?.image && (
-                    <img
+                    <Image
                       src={session.user.image}
                       alt="Profile"
-                      className="w-16 h-16 rounded-full"
+                      width={64}
+                      height={64}
+                      className="rounded-full"
                     />
                   )}
                 </div>

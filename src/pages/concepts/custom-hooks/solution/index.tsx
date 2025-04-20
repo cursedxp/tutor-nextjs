@@ -64,7 +64,7 @@ const CustomHooksSolution = () => {
         <div className="bg-green-50 border-l-4 border-green-400 p-4 mt-6">
           <p className="text-green-800 font-medium">Key Takeaways:</p>
           <ul className="list-disc ml-6 mt-2 text-black">
-            <li>Custom hooks start with 'use' prefix</li>
+            <li>Custom hooks start with &apos;use&apos; prefix</li>
             <li>Can use other hooks inside custom hooks</li>
             <li>Great for sharing logic between components</li>
             <li>Can handle complex state and side effects</li>

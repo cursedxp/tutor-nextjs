@@ -64,7 +64,7 @@ const CustomHooksStarter = () => {
           <p className="text-yellow-800 font-medium">Exercise Instructions:</p>
           <ul className="list-disc ml-6 mt-2 text-black">
             <li>Create hooks in a separate hooks directory</li>
-            <li>Follow the 'use' prefix naming convention</li>
+            <li>Follow the &apos;use&apos; prefix naming convention</li>
             <li>Handle all necessary states and side effects</li>
             <li>Make hooks reusable across components</li>
             <li>Test hooks with different use cases</li>
