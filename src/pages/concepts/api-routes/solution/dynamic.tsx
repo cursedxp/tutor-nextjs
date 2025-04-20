@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
+interface UserResponse {
+  id: string;
+  name: string;
+  email: string;
+}
+
 const DynamicApiRoute = () => {
   const [userId, setUserId] = useState("1");
-  const [response, setResponse] = useState<any>(null);
+  const [response, setResponse] = useState<UserResponse | null>(null);
 
   const handleTest = async () => {
     try {

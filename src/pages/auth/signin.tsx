@@ -25,6 +25,7 @@ const SignIn = () => {
         router.push("/concepts/authentication/solution/basic");
       }
     } catch (error) {
+      console.error("Sign in error:", error);
       setError("An error occurred during sign in");
     }
   };

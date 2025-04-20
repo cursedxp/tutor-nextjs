@@ -1,10 +1,21 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
+interface Post {
+  id: string;
+  title: string;
+  content: string;
+}
+
+interface PostInput {
+  title: string;
+  content: string;
+}
+
 const RestApiRoute = () => {
-  const [posts, setPosts] = useState<any[]>([]);
-  const [newPost, setNewPost] = useState({ title: "", content: "" });
-  const [selectedPost, setSelectedPost] = useState<any>(null);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [newPost, setNewPost] = useState<PostInput>({ title: "", content: "" });
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
 
   const fetchPosts = async () => {
     try {

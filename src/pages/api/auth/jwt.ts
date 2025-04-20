@@ -46,6 +46,7 @@ export default async function handler(
       const token = generateToken(payload);
       return res.status(200).json({ token });
     } catch (error) {
+      console.error("Token generation error:", error);
       return res.status(500).json({ error: "Failed to generate token" });
     }
   }
@@ -61,6 +62,7 @@ export default async function handler(
       const payload = verifyToken(token);
       return res.status(200).json(payload);
     } catch (error) {
+      console.error("JWT verification error:", error);
       return res.status(401).json({ error: "Invalid token" });
     }
   }

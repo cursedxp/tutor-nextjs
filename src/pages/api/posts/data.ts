@@ -1,7 +1,7 @@
 import type { Post } from "./types";
 
 // In-memory storage for posts
-export let posts: Post[] = [];
+export const posts: Post[] = [];
 
 // Helper functions for managing posts
 export const getPosts = () => posts;

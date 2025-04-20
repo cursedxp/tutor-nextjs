@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
+interface UserResponse {
+  id: string;
+  name: string;
+  email: string;
+  // Add other user properties as needed
+}
+
 const DynamicApiRouteStarter = () => {
   const [userId, setUserId] = useState("1");
-  const [response, setResponse] = useState<any>(null);
+  const [response, setResponse] = useState<UserResponse | null>(null);
 
   const handleTest = async () => {
     try {
