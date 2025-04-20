@@ -24,7 +24,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 // TODO: Implement getStaticProps
-export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   // Your task is to:
   // 1. Get the params array from the URL
   // 2. Create or fetch possible paths

@@ -9,18 +9,29 @@ type Post = {
 };
 
 const ClientDataFetchingStarter = () => {
-  // TODO: Implement state management for posts, loading, and error states
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // TODO: Implement data fetching using useEffect
+  const fetchPosts = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await fetch("/api/posts");
+      if (!response.ok) {
+        throw new Error("Failed to fetch posts");
+      }
+      const data = await response.json();
+      setPosts(data);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    // Your task is to:
-    // 1. Create a fetchPosts function
-    // 2. Handle loading state
-    // 3. Handle errors
-    // 4. Update the posts state
+    fetchPosts();
   }, []);
 
   return (
@@ -46,40 +57,29 @@ const ClientDataFetchingStarter = () => {
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-semibold">Client-Side Data</h2>
             <button
-              onClick={() => {
-                // TODO: Implement refresh functionality
-              }}
+              onClick={fetchPosts}
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
             >
-              Refresh Data
+              Refresh Posts
             </button>
           </div>
 
-          {loading ? (
-            <div className="flex justify-center items-center h-32">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
-            </div>
-          ) : error ? (
-            <div className="bg-red-50 border-l-4 border-red-400 p-4 text-red-700">
-              Error: {error}
-            </div>
-          ) : (
+          {loading && <p className="text-gray-600">Loading posts...</p>}
+          {error && <p className="text-red-600">Error: {error}</p>}
+          {!loading && !error && posts.length === 0 && (
+            <p className="text-gray-600">No posts found</p>
+          )}
+          {!loading && !error && posts.length > 0 && (
             <div className="space-y-4">
-              {posts.length === 0 ? (
-                <p className="text-gray-500 italic">
-                  No posts found. Implement data fetching to load some posts!
-                </p>
-              ) : (
-                posts.map((post) => (
-                  <div key={post.id} className="border rounded p-4">
-                    <h3 className="font-semibold text-lg mb-2">{post.title}</h3>
-                    <p className="text-gray-600 mb-2">{post.content}</p>
-                    <p className="text-sm text-gray-500">
-                      Created: {new Date(post.createdAt).toLocaleString()}
-                    </p>
-                  </div>
-                ))
-              )}
+              {posts.map((post) => (
+                <div key={post.id} className="border rounded p-4">
+                  <h3 className="font-semibold">{post.title}</h3>
+                  <p className="text-gray-600">{post.content}</p>
+                  <p className="text-sm text-gray-500">
+                    Created: {new Date(post.createdAt).toLocaleDateString()}
+                  </p>
+                </div>
+              ))}
             </div>
           )}
         </div>

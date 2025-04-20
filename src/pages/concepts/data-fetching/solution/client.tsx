@@ -115,6 +115,10 @@ const ClientDataFetching = () => {
             <li>Can refetch data on demand</li>
           </ul>
         </div>
+
+        <p className="text-gray-600">
+          Let&apos;s fetch some data from the server!
+        </p>
       </div>
 
       <div className="flex space-x-4">

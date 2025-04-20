@@ -34,7 +34,8 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
     {
       id: "3",
       title: "When to Use Static Generation",
-      content: "Use static generation for content that doesn't change often.",
+      content:
+        "Use static generation for content that doesn&apos;t change often.",
       createdAt: new Date().toISOString(),
     },
   ];
@@ -85,7 +86,7 @@ const StaticDataFetching = ({ posts, buildTime }: StaticProps) => {
           <ul className="list-disc ml-6 mt-2 text-black">
             <li>Data is fetched at build time</li>
             <li>Pages are pre-rendered into static HTML</li>
-            <li>Great for content that doesn't change often</li>
+            <li>Great for content that doesn&apos;t change often</li>
             <li>Provides excellent performance and SEO</li>
             <li>Can be revalidated using ISR</li>
           </ul>

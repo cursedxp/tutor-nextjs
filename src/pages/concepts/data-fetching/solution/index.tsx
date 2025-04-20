@@ -18,7 +18,7 @@ const DataFetchingSolution = () => {
             <h2 className="text-xl font-semibold mb-2">1. getStaticProps</h2>
             <p className="mb-2">
               Used for static generation at build time. Perfect for pages that
-              can be pre-rendered and don't need real-time data.
+              can be pre-rendered and don&apos;t need real-time data.
             </p>
             <Link
               href="/concepts/data-fetching/solution/static"

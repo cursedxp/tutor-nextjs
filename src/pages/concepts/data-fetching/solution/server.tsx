@@ -56,7 +56,7 @@ const ServerDataFetching = ({ posts, timestamp }: ServerProps) => {
         <p className="mb-4">
           This page demonstrates server-side rendering using{" "}
           <code>getServerSideProps</code>. The data is fetched on each request,
-          ensuring it's always up to date.
+          ensuring it&apos;s always up to date.
         </p>
 
         <div className="border rounded-lg p-4 mb-6">
