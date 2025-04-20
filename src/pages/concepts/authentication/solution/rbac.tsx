@@ -6,12 +6,19 @@ import { useRouter } from "next/router";
 // Define user roles
 type UserRole = "admin" | "user" | "guest";
 
+// Type guard to check if a string is a valid UserRole
+const isValidRole = (role: string | undefined): role is UserRole => {
+  return role !== undefined && ["admin", "user", "guest"].includes(role);
+};
+
 const RoleBasedAccessSolution = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  // Get user role from session
-  const userRole: UserRole = session?.user?.role || "guest";
+  // Get user role from session with type safety
+  const userRole: UserRole = isValidRole(session?.user?.role)
+    ? session.user.role
+    : "guest";
 
   // Redirect to login if not authenticated
   React.useEffect(() => {
