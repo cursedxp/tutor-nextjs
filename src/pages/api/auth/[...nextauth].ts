@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import type { NextAuthOptions } from "next-auth";
 
 // For demo purposes, we'll use a simple in-memory user store
 const users = [
@@ -19,7 +20,26 @@ const users = [
   },
 ];
 
-export default NextAuth({
+// Extend the built-in session types
+declare module "next-auth" {
+  interface Session {
+    user: {
+      name?: string | null;
+      email?: string | null;
+      image?: string | null;
+      role?: string;
+    } | null;
+  }
+}
+
+// Extend the built-in JWT types
+declare module "next-auth/jwt" {
+  interface JWT {
+    role?: string;
+  }
+}
+
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -37,16 +57,16 @@ export default NextAuth({
             u.email === credentials.email && u.password === credentials.password
         );
 
-        if (user) {
-          return {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            role: user.role,
-          };
+        if (!user) {
+          return null;
         }
 
-        return null;
+        return {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+        };
       },
     }),
   ],
@@ -61,10 +81,12 @@ export default NextAuth({
       return token;
     },
     async session({ session, token }) {
-      if (session?.user) {
+      if (session?.user && typeof token.role === "string") {
         session.user.role = token.role;
       }
       return session;
     },
   },
-});
+};
+
+export default NextAuth(authOptions);
